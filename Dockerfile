@@ -1,9 +1,11 @@
-FROM rust:1.75-slim-bullseye as builder
+FROM rust:1.81-slim-bullseye as builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
     pkg-config \
     libssl-dev \
+    git \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pnpm
@@ -14,11 +16,10 @@ ENV PATH="/root/.local/share/pnpm:$PATH"
 RUN rustup target add wasm32-unknown-unknown
 
 # Install cargo-leptos
-RUN cargo install cargo-leptos
-
-WORKDIR /app
+RUN cargo install cargo-leptos --locked
 
 # Clone the Ibis repository
+WORKDIR /app
 RUN git clone https://github.com/Nutomic/ibis.git . && \
     pnpm install && \
     cargo leptos build --release
