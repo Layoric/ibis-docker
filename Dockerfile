@@ -17,10 +17,11 @@ RUN rustup target add wasm32-unknown-unknown
 RUN cargo install cargo-leptos
 
 WORKDIR /app
-COPY . .
 
-# Build the project
-RUN pnpm install && cargo leptos build --release
+# Clone the Ibis repository
+RUN git clone https://github.com/Nutomic/ibis.git . && \
+    pnpm install && \
+    cargo leptos build --release
 
 # Final image
 FROM debian:bullseye-slim
