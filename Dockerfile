@@ -33,7 +33,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY --from=builder /app/target/release/ibis /app/ibis
-COPY config.toml /app/config.toml
+# Copy config if it exists, otherwise use default config
+COPY config.toml /app/config.toml || echo "Using default configuration"
 
 # Create ibis user
 RUN useradd -r -s /bin/false ibis && \
