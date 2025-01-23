@@ -24,7 +24,7 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
    ```
 
 4. Access Ibis:
-   - Open http://localhost:8081 in your browser
+   - Open http://localhost:3000 in your browser
    - Login with the admin credentials from config.toml
 
 ## Configuration
