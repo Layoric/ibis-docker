@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     gzip \
     libpq5 \
+    nginx \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -16,8 +17,9 @@ RUN wget https://github.com/Nutomic/ibis/releases/latest/download/ibis.gz && \
     gzip -d ibis.gz && \
     chmod +x ibis
 
-# Copy config if it exists
+# Copy config and nginx config
 COPY config.toml /app/config.toml
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Create ibis user
 RUN useradd -r -s /bin/false ibis && \
@@ -25,5 +27,6 @@ RUN useradd -r -s /bin/false ibis && \
 
 USER ibis
 
+EXPOSE 8081
 EXPOSE 3000
-CMD ["./ibis"]
+CMD ["sh", "-c", "nginx && ./ibis"]

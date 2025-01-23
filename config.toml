@@ -1,5 +1,6 @@
 [federation]
 domain = "localhost"
+allowed_origins = ["http://localhost:8081"]
 
 [database]
 connection_url = "postgres://ibis:ibis@db:5432/ibis"
@@ -7,3 +8,6 @@ connection_url = "postgres://ibis:ibis@db:5432/ibis"
 [setup]
 admin_username = "admin"
 admin_password = "admin123"
+
+[server]
+cors_allowed_origins = ["http://localhost:8081"]
