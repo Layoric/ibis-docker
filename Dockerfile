@@ -1,4 +1,4 @@
-FROM rust:1.81-slim-bullseye as builder
+FROM rust:1.82-slim-bullseye as builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
@@ -17,7 +17,7 @@ ENV PATH="/root/.local/share/pnpm:$PATH"
 RUN rustup target add wasm32-unknown-unknown
 
 # Install cargo-leptos
-RUN cargo install cargo-leptos --locked
+RUN cargo install cargo-leptos --version 0.3.0 --locked
 
 # Clone the Ibis repository
 WORKDIR /app
