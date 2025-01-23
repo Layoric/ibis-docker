@@ -8,10 +8,17 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pnpm
+# Install Node.js and pnpm
 ENV SHELL=/bin/bash
-RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+RUN apt-get update && apt-get install -y \
+    curl \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g pnpm
 ENV PATH="/root/.local/share/pnpm:$PATH"
+ENV LEPTOS_TAILWIND_VERSION=v4.0.0
 
 # Install wasm target
 RUN rustup target add wasm32-unknown-unknown
