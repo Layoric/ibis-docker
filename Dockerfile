@@ -21,12 +21,14 @@ RUN wget https://github.com/Nutomic/ibis/releases/latest/download/ibis.gz && \
 COPY config.toml /app/config.toml
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Create ibis user
+# Create ibis user and nginx directories
 RUN useradd -r -s /bin/false ibis && \
-    chown ibis:ibis /app -R
+    mkdir -p /var/lib/nginx /var/log/nginx && \
+    chown ibis:ibis /app -R && \
+    chown ibis:ibis /var/lib/nginx /var/log/nginx
 
 USER ibis
 
 EXPOSE 8081
 EXPOSE 3000
-CMD ["sh", "-c", "nginx && ./ibis"]
+CMD ["sh", "-c", "nginx -c /etc/nginx/nginx.conf && ./ibis"]
