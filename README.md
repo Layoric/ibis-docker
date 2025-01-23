@@ -31,7 +31,6 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
 
    Example 1: Change port
    ```yaml
-   version: '3.8'
    services:
      ibis:
        environment:
@@ -42,7 +41,6 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
 
    Example 2: Use with nginx-proxy (requires nginx-proxy running on host)
    ```yaml
-   version: '3.8'
    services:
      ibis:
        networks:
