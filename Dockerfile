@@ -25,5 +25,5 @@ RUN useradd -r -s /bin/false ibis && \
 
 USER ibis
 
-EXPOSE 8081
+EXPOSE 3000
 CMD ["./ibis"]
