@@ -30,17 +30,17 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
 5. (Optional) Create a `docker-compose.override.yml` file to customize settings:
 
    Example 1: Change port
-   ```yaml
+```yaml
    services:
      ibis:
        environment:
          LEPTOS_SITE_ADDR: "0.0.0.0:3001"
        ports:
          - "3001:3001"
-   ```
+```
 
    Example 2: Use with nginx-proxy (requires nginx-proxy running on host)
-   ```yaml
+```yaml
    services:
      ibis:
        networks:
@@ -52,10 +52,10 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
          LETSENCRYPT_HOST: ibis.example.com
          LETSENCRYPT_EMAIL: admin@example.com
 
-networks:
-  proxy:
-    external: true
-   ```
+  networks:
+    proxy:
+      external: true
+```
 
 ## Configuration
 
