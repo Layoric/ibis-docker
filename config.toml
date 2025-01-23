@@ -7,3 +7,12 @@
  [setup]                                                                                                                                                                                
  admin_username = "admin"                                                                                                                                                               
  admin_password = "admin123" 
+[federation]
+domain = "localhost"
+
+[database]
+connection_url = "postgres://ibis:ibis@db:5432/ibis"
+
+[setup]
+admin_username = "admin"
+admin_password = "changeme"
