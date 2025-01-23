@@ -41,20 +41,20 @@ This repository provides a Docker-based setup for running [Ibis](https://github.
 
    Example 2: Use with nginx-proxy (requires nginx-proxy running on host)
 ```yaml
-   services:
-     ibis:
-       networks:
-         - ibis-net
-         - proxy
-       environment:
-         VIRTUAL_HOST: ibis.example.com
-         VIRTUAL_PORT: 3000
-         LETSENCRYPT_HOST: ibis.example.com
-         LETSENCRYPT_EMAIL: admin@example.com
+services:
+  ibis:
+    networks:
+      - ibis-net
+      - proxy
+    environment:
+      VIRTUAL_HOST: ibis.example.com
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: ibis.example.com
+      LETSENCRYPT_EMAIL: admin@example.com
 
-  networks:
-    proxy:
-      external: true
+networks:
+  proxy:
+    external: true
 ```
 
 ## Configuration
