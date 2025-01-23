@@ -17,7 +17,7 @@ ENV PATH="/root/.local/share/pnpm:$PATH"
 RUN rustup target add wasm32-unknown-unknown
 
 # Install cargo-leptos
-RUN cargo install cargo-leptos --version 0.3.0 --locked
+RUN cargo install cargo-leptos --locked
 
 # Clone the Ibis repository
 WORKDIR /app
