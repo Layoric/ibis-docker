@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pnpm
+ENV SHELL=/bin/bash
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 ENV PATH="/root/.local/share/pnpm:$PATH"
 
